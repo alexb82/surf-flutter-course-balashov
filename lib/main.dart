@@ -1,21 +1,32 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(App());
+}
+
+class App extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "Task 3.5!",
+      home: Material(
+        child: MyFirstStateFullWidget(),
+      ),
+    );
+  }
 }
 
 class MyFirstWidget extends StatelessWidget {
   int i = 0;
+
   @override
   Widget build(BuildContext context) {
     i++;
-    print(
-        'Stateless build run: ${i}'); //Всегда 1 т.к. виджет не хранит свое состояние и при
-    //хот релоде каждый раз создается заново с новой инциализацией переменной i
+    print('Stateless build run: ${i}');
     return Container(
-        child: Center(
-      child: Text('Hello'),
-    ),
+      child: Center(
+        child: Text('Hello2'),
+      ),
     );
   }
 }
@@ -27,14 +38,20 @@ class MyFirstStateFullWidget extends StatefulWidget {
 
 class _MyFirstStateFullWidgetState extends State<MyFirstStateFullWidget> {
   int i = 0;
+
+  void PrintContext() {
+    print(context.runtimeType);
+  }
+
   @override
   Widget build(BuildContext context) {
     i++;
     print('Statefull build run: ${i}');
+    PrintContext();
     return Container(
-        child: Center(
-      child: Text('Hello'),
-    ),
+      child: Center(
+        child: Text('Hello'),
+      ),
     );
   }
 }
