@@ -4,6 +4,41 @@ void main() {
   runApp(MyApp());
 }
 
+class MyFirstWidget extends StatelessWidget {
+  @override
+  int i = 0;
+
+  Widget build(BuildContext context) {
+    i++;
+    print(
+        'Stateless build run: ${i}'); //Всегда 1 т.к. виджет не хранит свое состояние и при
+    //хот релоде каждый раз создается заново с новой инциализацией переменной i
+    return Container(
+        child: Center(
+      child: Text('Hello'),
+    ));
+  }
+}
+
+class MyFirstStateFullWidget extends StatefulWidget {
+  @override
+  _MyFirstStateFullWidgetState createState() => _MyFirstStateFullWidgetState();
+}
+
+class _MyFirstStateFullWidgetState extends State<MyFirstStateFullWidget> {
+  @override
+  int i = 0;
+
+  Widget build(BuildContext context) {
+    i++;
+    print('Statefull build run: ${i}');
+    return Container(
+        child: Center(
+      child: Text('Hello'),
+    ));
+  }
+}
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -22,7 +57,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyFirstStateFullWidget(),
     );
   }
 }
