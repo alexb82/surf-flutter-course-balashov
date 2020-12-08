@@ -5,9 +5,8 @@ void main() {
 }
 
 class MyFirstWidget extends StatelessWidget {
-  @override
   int i = 0;
-
+  @override
   Widget build(BuildContext context) {
     i++;
     print(
@@ -16,7 +15,8 @@ class MyFirstWidget extends StatelessWidget {
     return Container(
         child: Center(
       child: Text('Hello'),
-    ));
+    ),
+    );
   }
 }
 
@@ -26,16 +26,16 @@ class MyFirstStateFullWidget extends StatefulWidget {
 }
 
 class _MyFirstStateFullWidgetState extends State<MyFirstStateFullWidget> {
-  @override
   int i = 0;
-
+  @override
   Widget build(BuildContext context) {
     i++;
     print('Statefull build run: ${i}');
     return Container(
         child: Center(
       child: Text('Hello'),
-    ));
+    ),
+    );
   }
 }
 
