@@ -4,7 +4,7 @@ class NotColoredText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return (Text(
-      "\nСписок\nинтересных мест",
+      "Список\nинтересных мест",
       style: TextStyle(
         fontFamily: "Roboto",
         fontSize: 32,
@@ -22,7 +22,7 @@ class ColoredText extends StatelessWidget {
   Widget build(BuildContext context) {
     return (RichText(
       text: TextSpan(
-        text: "\nС",
+        text: "С",
         style: TextStyle(
           fontFamily: "Roboto",
           fontSize: 32,
@@ -77,15 +77,13 @@ class _SightListScreenState extends State<SightListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            colored ? NotColoredText() : ColoredText(),
-          ],
+        title: Padding(
+          padding: EdgeInsets.fromLTRB(16, 40, 16, 0),
+          child: colored ? NotColoredText() : ColoredText(),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        toolbarHeight: 136,
+        toolbarHeight: 128,
       ),
       body: Center(
         child: Text("Sight List Body"),
