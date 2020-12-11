@@ -29,3 +29,14 @@ flutter:
     - family: Roboto
       fonts:
         - asset: res/fonts/Roboto/Roboto-Black.ttf
+        - asset: res/fonts/Roboto/Roboto-BlackItalic.ttf
+        - asset: res/fonts/Roboto/Roboto-Bold.ttf
+        - asset: res/fonts/Roboto/Roboto-BoldItalic.ttf
+        - asset: res/fonts/Roboto/Roboto-Italic.ttf
+        - asset: res/fonts/Roboto/Roboto-Light.ttf
+        - asset: res/fonts/Roboto/Roboto-LightItalic.ttf
+        - asset: res/fonts/Roboto/Roboto-Medium.ttf
+        - asset: res/fonts/Roboto/Roboto-MediumItalic.ttf
+        - asset: res/fonts/Roboto/Roboto-Regular.ttf
+        - asset: res/fonts/Roboto/Roboto-Thin.ttf
+        - asset: res/fonts/Roboto/Roboto-ThinItalic.ttf
