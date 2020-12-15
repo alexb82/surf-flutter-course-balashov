@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:places/UI/screen/sight_card.dart';
+import 'package:places/mocks.dart';
 
 class NotColoredText extends StatelessWidget {
   @override
@@ -17,79 +19,39 @@ class NotColoredText extends StatelessWidget {
   }
 }
 
-class ColoredText extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return (RichText(
-      text: TextSpan(
-        text: "С",
-        style: TextStyle(
-          fontFamily: "Roboto",
-          fontSize: 32,
-          color: Color(0xFF4CAF50),
-        ),
-        children: [
-          TextSpan(
-            text: "писок\n",
-            style: TextStyle(
-              fontFamily: "Roboto",
-              fontSize: 32,
-              color: Color(0xFF3B3E5B),
-            ),
-          ),
-          TextSpan(
-            text: "и",
-            style: TextStyle(
-              fontFamily: "Roboto",
-              fontSize: 32,
-              color: Color(0xFFFBC02D),
-            ),
-          ),
-          TextSpan(
-            text: "нтересных мест",
-            style: TextStyle(
-              fontFamily: "Roboto",
-              fontSize: 32,
-              color: Color(0xFF3B3E5B),
-            ),
-          ),
-        ],
-      ),
-    ));
-  }
-}
-
 class SightListScreen extends StatefulWidget {
   @override
   _SightListScreenState createState() => _SightListScreenState();
 }
 
 class _SightListScreenState extends State<SightListScreen> {
-  var colored = false;
-
-  void splitColor() {
-    setState(() {
-      colored = !colored;
+  List<Widget> _getSightsList() {
+    return new List<Widget>.generate(mocks.length, (int index) {
+      return SightCard(mocks[index]);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Padding(
           padding: EdgeInsets.fromLTRB(16, 40, 16, 0),
-          child: colored ? NotColoredText() : ColoredText(),
+          child: NotColoredText(),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         toolbarHeight: 128,
       ),
-      body: Center(
-        child: Text("Sight List Body"),
+      body: Container(
+        width: 400,
+        child: SingleChildScrollView(
+          child: Column(
+            children: _getSightsList(),
+          ),
+        ),
       ),
-      floatingActionButton: FloatingActionButton(
-          onPressed: splitColor, child: Icon(Icons.call_split)),
     );
   }
 }
