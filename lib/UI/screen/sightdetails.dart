@@ -108,7 +108,7 @@ class SightDetails extends StatelessWidget {
               sight.type,
               style: TextStyle(
                 fontSize: 14,
-                fontWeight: FontWeight.normal,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
@@ -138,7 +138,7 @@ class SightDetails extends StatelessWidget {
         textAlign: TextAlign.left,
         style: TextStyle(
           fontSize: 24,
-          fontWeight: FontWeight.normal,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
@@ -154,6 +154,7 @@ class SightDetails extends StatelessWidget {
         sight.details,
         style: TextStyle(
           fontSize: 14,
+          fontFamily: 'Roboto',
           fontWeight: FontWeight.normal,
           fontStyle: FontStyle.normal,
         ),
@@ -224,7 +225,7 @@ class SightDetails extends StatelessWidget {
               ),
               child: Text(
                 'ПОСТРОИТЬ МАРШРУТ',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
           ],
