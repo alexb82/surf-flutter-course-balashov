@@ -9,7 +9,7 @@ class SightCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
+      padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
       child: Column(children: [
         Container(
             width: double.infinity,
