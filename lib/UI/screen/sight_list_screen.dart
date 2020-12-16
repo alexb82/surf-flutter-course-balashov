@@ -26,9 +26,7 @@ class SightListScreen extends StatefulWidget {
 
 class _SightListScreenState extends State<SightListScreen> {
   List<Widget> _getSightsList() {
-    return new List<Widget>.generate(mocks.length, (int index) {
-      return SightCard(mocks[index]);
-    });
+    return mocks.map((item)=> SightCard(item)).toList();
   }
 
   @override

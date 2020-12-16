@@ -9,10 +9,10 @@ class SightCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
       child: Column(children: [
         Container(
-            width: 328,
+            width: double.infinity,
             height: 96,
             decoration: BoxDecoration(
               color: Colors.red,
@@ -22,8 +22,12 @@ class SightCard extends StatelessWidget {
             ),
             child: Stack(
               children: [
-                Align(
-                  alignment: Alignment(-0.902, -0.667),
+                Container(
+                  alignment: Alignment.topLeft,
+                  padding: EdgeInsets.only(
+                    left: 16,
+                    top: 16,
+                  ),
                   child: Text(
                     sight.type.toLowerCase(),
                     style: TextStyle(
@@ -32,8 +36,12 @@ class SightCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment(0.89, -0.604),
+                Container(
+                  alignment: Alignment.topRight,
+                  padding: EdgeInsets.only(
+                    top: 19,
+                    right: 18,
+                  ),
                   child: Container(
                     width: 20,
                     height: 18,
@@ -43,7 +51,7 @@ class SightCard extends StatelessWidget {
               ],
             )),
         Container(
-          width: 328,
+          width: double.infinity,
           height: 92,
           color: Color(0xFFF5F5F5),
           child: Padding(
