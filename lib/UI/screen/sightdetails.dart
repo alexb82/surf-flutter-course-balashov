@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/common/colors.dart';
 import 'package:places/domain/sight.dart';
 
 class SightDetails extends StatelessWidget {
@@ -16,7 +17,7 @@ class SightDetails extends StatelessWidget {
           Container(
             width: 22,
             height: 19,
-            color: Color(0x387C7E92),
+            color: CLRLIGHTGREY,
             alignment: Alignment.topLeft,
             padding: EdgeInsets.only(
               top: 10.5,
@@ -32,7 +33,7 @@ class SightDetails extends StatelessWidget {
             child: Text(
               'Запланировать',
               style: TextStyle(
-                color: Color(0x387C7E92),
+                color: CLRLIGHTGREY,
               ),
             ),
           ),
@@ -55,7 +56,7 @@ class SightDetails extends StatelessWidget {
             Container(
               width: 20,
               height: 18,
-              color: Color(0xFF3B3E5B),
+              color: CLRALMOSTBLACK,
               alignment: Alignment.topLeft,
               padding: EdgeInsets.only(
                 top: 11,
@@ -71,7 +72,7 @@ class SightDetails extends StatelessWidget {
               child: Text(
                 'В Избранное',
                 style: TextStyle(
-                  color: Color(0xFF3B3E5B),
+                  color: CLRALMOSTBLACK,
                 ),
               ),
             ),
@@ -121,7 +122,7 @@ class SightDetails extends StatelessWidget {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.normal,
-                color: Color(0xFF7C7E92),
+                color: CLRGREY,
               ),
             ),
           ),
@@ -168,7 +169,7 @@ class SightDetails extends StatelessWidget {
         top: 24,
       ),
       child: Divider(
-        color: Color(0x247C7E92),
+        color: CLRLIGHTGREY,
         thickness: 0.8,
       ),
     );
@@ -208,7 +209,7 @@ class SightDetails extends StatelessWidget {
         alignment: Alignment.center,
         height: 48,
         decoration: BoxDecoration(
-          color: Color(0xFF4CAF50),
+          color: CLRGREEN,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Row(

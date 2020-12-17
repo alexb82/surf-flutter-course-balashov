@@ -1,10 +1,73 @@
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/common/colors.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;
 
   SightCard(this.sight);
+
+  Widget _buildSightType(BuildContext context) {
+    return Container(
+      alignment: Alignment.topLeft,
+      padding: EdgeInsets.only(
+        left: 16,
+        top: 16,
+      ),
+      child: Text(
+        sight.type.toLowerCase(),
+        style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAddToFavIcon(BuildContext context) {
+    return Container(
+      alignment: Alignment.topRight,
+      padding: EdgeInsets.only(
+        top: 19,
+        right: 18,
+      ),
+      child: Container(
+        width: 20,
+        height: 18,
+        color: Colors.white,
+      ),
+    );
+  }
+
+  Widget _buildSightCardInfo(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
+      child: Column(
+        children: [
+          Container(
+            width: 296,
+            child: Text(
+              sight.name,
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Container(
+              width: 296,
+              margin: EdgeInsets.only(
+                top: 2,
+              ),
+              child: Text(
+                sight.url,
+                textAlign: TextAlign.left,
+                style: TextStyle(color: CLRGREY),
+              ))
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,65 +85,15 @@ class SightCard extends StatelessWidget {
             ),
             child: Stack(
               children: [
-                Container(
-                  alignment: Alignment.topLeft,
-                  padding: EdgeInsets.only(
-                    left: 16,
-                    top: 16,
-                  ),
-                  child: Text(
-                    sight.type.toLowerCase(),
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Container(
-                  alignment: Alignment.topRight,
-                  padding: EdgeInsets.only(
-                    top: 19,
-                    right: 18,
-                  ),
-                  child: Container(
-                    width: 20,
-                    height: 18,
-                    color: Colors.white,
-                  ),
-                ),
+                _buildSightType(context),
+                _buildAddToFavIcon(context),
               ],
             )),
         Container(
           width: double.infinity,
           height: 92,
-          color: Color(0xFFF5F5F5),
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
-            child: Column(
-              children: [
-                Container(
-                  width: 296,
-                  child: Text(
-                    sight.name,
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Container(
-                    width: 296,
-                    margin: EdgeInsets.only(
-                      top: 2,
-                    ),
-                    child: Text(
-                      sight.url,
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Color(0xFF7C7E92)),
-                    ))
-              ],
-            ),
-          ),
+          color: CLRDIRTYWHITE,
+          child: _buildSightCardInfo(context),
         ),
       ]),
     );

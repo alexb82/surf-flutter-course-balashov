@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/UI/screen/sight_card.dart';
+import 'package:places/common/colors.dart';
 import 'package:places/mocks.dart';
 
 class NotColoredText extends StatelessWidget {
@@ -12,7 +13,7 @@ class NotColoredText extends StatelessWidget {
         fontSize: 32,
         fontStyle: FontStyle.normal,
         fontWeight: FontWeight.bold,
-        color: Color(0xFF3B3E5B),
+        color: CLRALMOSTBLACK,
       ),
       textAlign: TextAlign.left,
     ));
