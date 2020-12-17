@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:places/UI/screen/sightdetails.dart';
 import 'package:places/UI/screen/sight_list_screen.dart';
+import 'package:places/mocks.dart';
 
 void main() {
   runApp(App());
