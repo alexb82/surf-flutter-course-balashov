@@ -41,16 +41,23 @@ class SightCard extends StatelessWidget {
 
   Widget _buildSightCardInfo(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
+      padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
       child: Column(
         children: [
           Container(
             width: 296,
-            child: Text(
-              sight.name,
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
+            alignment: Alignment.topLeft,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: 151,
+                maxHeight: 62,
+              ),
+              child: Text(
+                sight.name,
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
@@ -89,10 +96,21 @@ class SightCard extends StatelessWidget {
                 _buildAddToFavIcon(context),
               ],
             )),
+        SizedBox(
+          height: 16,
+          child: Container(
+            color: CLRDIRTYWHITE,
+          ),
+        ),
         Container(
           width: double.infinity,
-          height: 92,
-          color: CLRDIRTYWHITE,
+          height: 98,
+          decoration: BoxDecoration(
+            color: CLRDIRTYWHITE,
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(12),
+            ),
+          ),
           child: _buildSightCardInfo(context),
         ),
       ]),

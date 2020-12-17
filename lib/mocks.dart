@@ -2,7 +2,7 @@ import 'package:places/domain/sight.dart';
 
 final List<Sight> mocks = [
   Sight(
-    'Очень крутое место',
+    'Очень крутое место с длинным названием, для проверки работы ConstrainedBox',
     1.23456,
     7.89012,
     'cool.com',

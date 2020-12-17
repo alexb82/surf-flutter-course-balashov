@@ -226,7 +226,8 @@ class SightDetails extends StatelessWidget {
               ),
               child: Text(
                 'ПОСТРОИТЬ МАРШРУТ',
-                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
           ],
