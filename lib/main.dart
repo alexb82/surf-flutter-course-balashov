@@ -13,7 +13,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: "Task 3.5!",
       home: Material(
-        child: SightListScreen(),
+        child: SightDetails(mocks[0]),
       ),
     );
   }

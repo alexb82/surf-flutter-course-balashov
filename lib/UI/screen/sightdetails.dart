@@ -159,25 +159,33 @@ class SightDetails extends StatelessWidget {
   }
 
   Widget _buildGallery(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 360,
-      width: MediaQuery.of(context).size.width,
-      color: Colors.blue,
-      child: Padding(
-        padding: EdgeInsets.only(
-          left: 16,
-          top: 36,
-        ),
-        child: Container(
-          alignment: Alignment.topLeft,
-          child: SizedBox(
-            width: 32.0,
-            height: 32.0,
-            child: const DecoratedBox(
-              decoration: const BoxDecoration(color: Colors.amber),
+      width: double.infinity,
+      child: Stack(
+        children: [
+          Image.network(
+            sight.imgsource,
+            fit: BoxFit.fitHeight,
+
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+              left: 16,
+              top: 36,
+            ),
+            child: Container(
+              alignment: Alignment.topLeft,
+              child: SizedBox(
+                width: 32.0,
+                height: 32.0,
+                child: const DecoratedBox(
+                  decoration: const BoxDecoration(color: Colors.amber),
+                ),
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -221,7 +229,7 @@ class SightDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width,
+      width: double.infinity,
       child: Stack(
         children: [
           Padding(

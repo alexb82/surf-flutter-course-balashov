@@ -14,6 +14,11 @@ const stlNormalWhite = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
+const stl16Bold = TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.bold,
+);
+
 const stlBold = TextStyle(
   fontWeight: FontWeight.bold,
 );
