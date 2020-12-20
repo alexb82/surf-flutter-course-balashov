@@ -1,0 +1,1 @@
+const txtBuildRoute = 'Построить маршрут';

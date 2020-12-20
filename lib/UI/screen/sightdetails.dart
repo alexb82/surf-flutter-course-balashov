@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:places/common/colors.dart';
+import 'package:places/common/styles.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/common/texts.dart';
 
 class SightDetails extends StatelessWidget {
   final Sight sight;
@@ -17,7 +19,7 @@ class SightDetails extends StatelessWidget {
           Container(
             width: 22,
             height: 19,
-            color: CLRLIGHTGREY,
+            color: clrLightGrey,
             alignment: Alignment.topLeft,
             padding: EdgeInsets.only(
               top: 10.5,
@@ -32,9 +34,7 @@ class SightDetails extends StatelessWidget {
             ),
             child: Text(
               'Запланировать',
-              style: TextStyle(
-                color: CLRLIGHTGREY,
-              ),
+              style: stlNormalLightGrey,
             ),
           ),
         ],
@@ -56,7 +56,7 @@ class SightDetails extends StatelessWidget {
             Container(
               width: 20,
               height: 18,
-              color: CLRALMOSTBLACK,
+              color: clrAlmostBlack,
               alignment: Alignment.topLeft,
               padding: EdgeInsets.only(
                 top: 11,
@@ -71,9 +71,7 @@ class SightDetails extends StatelessWidget {
               ),
               child: Text(
                 'В Избранное',
-                style: TextStyle(
-                  color: CLRALMOSTBLACK,
-                ),
+                style: stlNormalAlmostBlack,
               ),
             ),
           ],
@@ -107,10 +105,7 @@ class SightDetails extends StatelessWidget {
           Container(
             child: Text(
               sight.type,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-              ),
+              style: stl14Bold,
             ),
           ),
           Container(
@@ -119,11 +114,7 @@ class SightDetails extends StatelessWidget {
             ),
             child: Text(
               'закрыто до 09:00',
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.normal,
-                color: CLRGREY,
-              ),
+              style: stlNormalGrey,
             ),
           ),
         ],
@@ -137,10 +128,7 @@ class SightDetails extends StatelessWidget {
       child: Text(
         sight.name,
         textAlign: TextAlign.left,
-        style: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-        ),
+        style: stl24Bold,
       ),
     );
   }
@@ -153,12 +141,7 @@ class SightDetails extends StatelessWidget {
       ),
       child: Text(
         sight.details,
-        style: TextStyle(
-          fontSize: 14,
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.normal,
-          fontStyle: FontStyle.normal,
-        ),
+        style: stlNormalAlmostBlack,
       ),
     );
   }
@@ -169,7 +152,7 @@ class SightDetails extends StatelessWidget {
         top: 24,
       ),
       child: Divider(
-        color: CLRLIGHTGREY,
+        color: clrLightGrey,
         thickness: 0.8,
       ),
     );
@@ -209,7 +192,7 @@ class SightDetails extends StatelessWidget {
         alignment: Alignment.center,
         height: 48,
         decoration: BoxDecoration(
-          color: CLRGREEN,
+          color: clrGreen,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Row(
@@ -225,9 +208,8 @@ class SightDetails extends StatelessWidget {
                 left: 10,
               ),
               child: Text(
-                'ПОСТРОИТЬ МАРШРУТ',
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                txtBuildRoute.toUpperCase(),
+                style: stlBoldWhite,
               ),
             ),
           ],

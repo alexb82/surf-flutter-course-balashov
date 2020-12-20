@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/common/colors.dart';
+import 'package:places/common/styles.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;
@@ -16,10 +17,7 @@ class SightCard extends StatelessWidget {
       ),
       child: Text(
         sight.type.toLowerCase(),
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-        ),
+        style: stlNormalWhite,
       ),
     );
   }
@@ -41,7 +39,10 @@ class SightCard extends StatelessWidget {
 
   Widget _buildSightCardInfo(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+      padding: EdgeInsets.only(
+        left: 16,
+        right: 16,
+      ),
       child: Column(
         children: [
           Container(
@@ -55,9 +56,7 @@ class SightCard extends StatelessWidget {
               child: Text(
                 sight.name,
                 textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+                style: stlBold,
               ),
             ),
           ),
@@ -69,7 +68,7 @@ class SightCard extends StatelessWidget {
               child: Text(
                 sight.url,
                 textAlign: TextAlign.left,
-                style: TextStyle(color: CLRGREY),
+                style: stlNormalGrey,
               ))
         ],
       ),
@@ -99,14 +98,14 @@ class SightCard extends StatelessWidget {
         SizedBox(
           height: 16,
           child: Container(
-            color: CLRDIRTYWHITE,
+            color: clrDirtyWhite,
           ),
         ),
         Container(
           width: double.infinity,
           height: 98,
           decoration: BoxDecoration(
-            color: CLRDIRTYWHITE,
+            color: clrDirtyWhite,
             borderRadius: BorderRadius.vertical(
               bottom: Radius.circular(12),
             ),

@@ -2,25 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:places/UI/screen/sight_card.dart';
 import 'package:places/common/colors.dart';
 import 'package:places/mocks.dart';
+import 'package:places/common/styles.dart';
 
 class NotColoredText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return (Text(
       "Список\nинтересных мест",
-      style: TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 32,
-        fontStyle: FontStyle.normal,
-        fontWeight: FontWeight.bold,
-        color: CLRALMOSTBLACK,
-      ),
+      style: stlNormal32AlmostBlack,
       textAlign: TextAlign.left,
     ));
   }
 }
 
-Widget Ratio3_2(Widget w) {
+Widget Ratio3To2(Widget w) {
   return AspectRatio(
     aspectRatio: 3 / 2,
     child: w,
@@ -56,7 +51,7 @@ class SightListScreen extends StatefulWidget {
 
 class _SightListScreenState extends State<SightListScreen> {
   List<Widget> _getSightsList() {
-    return mocks.map((item) => Ratio3_2(SightCard(item))).toList();
+    return mocks.map((item) => Ratio3To2(SightCard(item))).toList();
   }
 
   @override
