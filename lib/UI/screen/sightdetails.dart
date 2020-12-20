@@ -159,15 +159,20 @@ class SightDetails extends StatelessWidget {
   }
 
   Widget _buildGallery(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: 360,
       width: double.infinity,
+      color: Colors.red,
       child: Stack(
         children: [
-          Image.network(
-            sight.imgsource,
-            fit: BoxFit.fitHeight,
-
+          Container(
+            alignment: Alignment.topLeft,
+            height: 360,
+            child: Image.network(
+              sight.imgsource,
+              fit: BoxFit.fitHeight,
+              height: 360,
+            ),
           ),
           Padding(
             padding: EdgeInsets.only(
@@ -236,7 +241,6 @@ class SightDetails extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(0.5, 64, 0.5, 0),
             child: Container(
               alignment: Alignment.bottomCenter,
-              height: MediaQuery.of(context).size.height - 64,
               color: Colors.white,
               child: Container(
                 //content here
