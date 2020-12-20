@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/common/colors.dart';
+import 'package:places/common/styles.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;
@@ -16,10 +17,7 @@ class SightCard extends StatelessWidget {
       ),
       child: Text(
         sight.type.toLowerCase(),
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-        ),
+        style: stlNormalWhite,
       ),
     );
   }
@@ -41,16 +39,24 @@ class SightCard extends StatelessWidget {
 
   Widget _buildSightCardInfo(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
+      padding: EdgeInsets.only(
+        left: 16,
+        right: 16,
+      ),
       child: Column(
         children: [
           Container(
             width: 296,
-            child: Text(
-              sight.name,
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
+            alignment: Alignment.topLeft,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: 151,
+                maxHeight: 62,
+              ),
+              child: Text(
+                sight.name,
+                textAlign: TextAlign.left,
+                style: stlBold,
               ),
             ),
           ),
@@ -62,7 +68,7 @@ class SightCard extends StatelessWidget {
               child: Text(
                 sight.url,
                 textAlign: TextAlign.left,
-                style: TextStyle(color: CLRGREY),
+                style: stlNormalGrey,
               ))
         ],
       ),
@@ -89,10 +95,21 @@ class SightCard extends StatelessWidget {
                 _buildAddToFavIcon(context),
               ],
             )),
+        SizedBox(
+          height: 16,
+          child: Container(
+            color: clrDirtyWhite,
+          ),
+        ),
         Container(
           width: double.infinity,
-          height: 92,
-          color: CLRDIRTYWHITE,
+          height: 98,
+          decoration: BoxDecoration(
+            color: clrDirtyWhite,
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(12),
+            ),
+          ),
           child: _buildSightCardInfo(context),
         ),
       ]),
