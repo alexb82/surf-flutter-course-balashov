@@ -10,6 +10,13 @@ class Sight {
   final String type;
   final String imgsource;
 
-  Sight(this.name, this.lat, this.lon, this.url, this.details, this.type,
-      this.imgsource);
+  Sight(
+    this.name,
+    this.lat,
+    this.lon,
+    this.url,
+    this.details,
+    this.type,
+    this.imgsource,
+  );
 }

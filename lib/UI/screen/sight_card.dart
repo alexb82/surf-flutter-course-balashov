@@ -9,24 +9,27 @@ class SightCard extends StatelessWidget {
   SightCard(this.sight);
 
   Widget _buildSightImg(BuildContext context) {
-    return Stack(children: [
-      Center(
-        child: RefreshProgressIndicator(),
+    return ClipRRect(
+      borderRadius: BorderRadius.vertical(
+        top: Radius.circular(16),
       ),
-      Container(
-        width: double.infinity,
-        height: 96,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(sight.imgsource),
-            fit: BoxFit.fitWidth,
+      child: Container(
+      width: double.infinity,
+      height: 96,
+      child: Image.network(sight.imgsource, fit: BoxFit.fitWidth,
+          loadingBuilder: (BuildContext context, Widget child,
+              ImageChunkEvent loadingProgress) {
+        if (loadingProgress == null) return child;
+        return Center(
+          child: CircularProgressIndicator(
+            value: loadingProgress.expectedTotalBytes != null
+                ? loadingProgress.cumulativeBytesLoaded /
+                    loadingProgress.expectedTotalBytes
+                : null,
           ),
-          borderRadius: BorderRadius.vertical(
-            top: Radius.circular(16),
-          ),
-        ),
-      ),
-    ]);
+        );
+      }),
+    ),);
   }
 
   Widget _buildSightType(BuildContext context) {
