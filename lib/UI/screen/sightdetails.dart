@@ -161,23 +161,43 @@ class SightDetails extends StatelessWidget {
   Widget _buildGallery(BuildContext context) {
     return Container(
       height: 360,
-      width: MediaQuery.of(context).size.width,
-      color: Colors.blue,
-      child: Padding(
-        padding: EdgeInsets.only(
-          left: 16,
-          top: 36,
-        ),
-        child: Container(
-          alignment: Alignment.topLeft,
-          child: SizedBox(
-            width: 32.0,
-            height: 32.0,
-            child: const DecoratedBox(
-              decoration: const BoxDecoration(color: Colors.amber),
+      width: double.infinity,
+      child: Stack(
+        children: [
+          Container(
+            alignment: Alignment.topLeft,
+            child: Image.network(sight.imgsource,
+                fit: BoxFit.fitHeight,
+                height: 360, loadingBuilder: (BuildContext context,
+                    Widget child, ImageChunkEvent loadingProgress) {
+              if (loadingProgress == null) return child;
+              return Center(
+                child: CircularProgressIndicator(
+                  value: loadingProgress.expectedTotalBytes != null
+                      ? loadingProgress.cumulativeBytesLoaded /
+                          loadingProgress.expectedTotalBytes
+                      : null,
+                ),
+              );
+            }),
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+              left: 16,
+              top: 36,
+            ),
+            child: Container(
+              alignment: Alignment.topLeft,
+              child: SizedBox(
+                width: 32.0,
+                height: 32.0,
+                child: const DecoratedBox(
+                  decoration: const BoxDecoration(color: Colors.amber),
+                ),
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -221,14 +241,13 @@ class SightDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width,
+      width: double.infinity,
       child: Stack(
         children: [
           Padding(
             padding: EdgeInsets.fromLTRB(0.5, 64, 0.5, 0),
             child: Container(
               alignment: Alignment.bottomCenter,
-              height: MediaQuery.of(context).size.height - 64,
               color: Colors.white,
               child: Container(
                 //content here

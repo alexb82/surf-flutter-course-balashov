@@ -8,6 +8,30 @@ class SightCard extends StatelessWidget {
 
   SightCard(this.sight);
 
+  Widget _buildSightImg(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.vertical(
+        top: Radius.circular(16),
+      ),
+      child: Container(
+      width: double.infinity,
+      height: 96,
+      child: Image.network(sight.imgsource, fit: BoxFit.fitWidth,
+          loadingBuilder: (BuildContext context, Widget child,
+              ImageChunkEvent loadingProgress) {
+        if (loadingProgress == null) return child;
+        return Center(
+          child: CircularProgressIndicator(
+            value: loadingProgress.expectedTotalBytes != null
+                ? loadingProgress.cumulativeBytesLoaded /
+                    loadingProgress.expectedTotalBytes
+                : null,
+          ),
+        );
+      }),
+    ),);
+  }
+
   Widget _buildSightType(BuildContext context) {
     return Container(
       alignment: Alignment.topLeft,
@@ -56,7 +80,7 @@ class SightCard extends StatelessWidget {
               child: Text(
                 sight.name,
                 textAlign: TextAlign.left,
-                style: stlBold,
+                style: stl16Bold,
               ),
             ),
           ),
@@ -81,20 +105,13 @@ class SightCard extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
       child: Column(children: [
         Container(
-            width: double.infinity,
-            height: 96,
-            decoration: BoxDecoration(
-              color: Colors.red,
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(16),
-              ),
-            ),
             child: Stack(
-              children: [
-                _buildSightType(context),
-                _buildAddToFavIcon(context),
-              ],
-            )),
+          children: [
+            _buildSightImg(context),
+            _buildSightType(context),
+            _buildAddToFavIcon(context),
+          ],
+        )),
         SizedBox(
           height: 16,
           child: Container(
