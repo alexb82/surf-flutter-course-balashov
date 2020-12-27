@@ -1,1 +1,9 @@
 const txtBuildRoute = 'Построить маршрут';
+const txtFav = 'Избранное';
+const txtWantAttend = 'Хочу посетить';
+const txtAttended = 'Посетил';
+const txtPlannedAt = 'Запланировано на ';
+const txtVisitedAt = 'Цель достигнута ';
+const txtEmpty = 'Пусто';
+const txtEmptyFav = 'Отмечайте понравившиеся\nместа и они появятся здесь.';
+const txtEmptyVisited = 'Заверщите маршрут,\nчтобы место попало сюда';

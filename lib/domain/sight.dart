@@ -9,6 +9,8 @@ class Sight {
   final String details;
   final String type;
   final String imgsource;
+  final String planned;
+  final String visited;
 
   Sight(
     this.name,
@@ -18,5 +20,7 @@ class Sight {
     this.details,
     this.type,
     this.imgsource,
+    this.planned,
+    this.visited,
   );
 }

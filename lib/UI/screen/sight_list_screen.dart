@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/UI/screen/sight_card.dart';
+import 'package:places/common/bottomnavbar.dart';
 import 'package:places/common/colors.dart';
 import 'package:places/mocks.dart';
 import 'package:places/common/styles.dart';
@@ -13,13 +14,6 @@ class NotColoredText extends StatelessWidget {
       textAlign: TextAlign.left,
     ));
   }
-}
-
-Widget Ratio3To2(Widget w) {
-  return AspectRatio(
-    aspectRatio: 3 / 2,
-    child: w,
-  );
 }
 
 class MyAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -51,7 +45,7 @@ class SightListScreen extends StatefulWidget {
 
 class _SightListScreenState extends State<SightListScreen> {
   List<Widget> _getSightsList() {
-    return mocks.map((item) => Ratio3To2(SightCard(item))).toList();
+    return mocks.map((item) => SightCard(item, 'basic')).toList();
   }
 
   @override
@@ -67,6 +61,7 @@ class _SightListScreenState extends State<SightListScreen> {
           ),
         ),
       ),
+      bottomNavigationBar: MyBottomNavBar(),
     );
   }
 }
