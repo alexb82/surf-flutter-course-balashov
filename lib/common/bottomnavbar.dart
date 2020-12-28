@@ -7,6 +7,7 @@ class MyBottomNavBar extends StatelessWidget {
       backgroundColor: Colors.white,
       unselectedItemColor: Colors.black,
       selectedItemColor: Colors.black,
+      type: BottomNavigationBarType.fixed,
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.memory), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.memory), label: ''),

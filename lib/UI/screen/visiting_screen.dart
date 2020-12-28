@@ -48,7 +48,8 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
           child: Container(
             color: clrDirtyWhite,
             child: TabBar(
-              unselectedLabelStyle: TextStyle(color: Colors.red, fontSize: 14),
+              automaticIndicatorColorAdjustment: false,
+              unselectedLabelColor: clrGrey,
               indicator: BoxDecoration(
                 color: clrGrey,
                 borderRadius: BorderRadius.all(Radius.circular(16)),
