@@ -4,9 +4,16 @@ import 'package:places/domain/sight.dart';
 import 'package:places/common/colors.dart';
 import 'package:places/common/styles.dart';
 
+enum Cardtype {
+  basic,
+  fav,
+  done,
+}
+
 class SightCard extends StatelessWidget {
   final Sight sight;
-  final String cardtype;
+
+  final cardtype;
 
   SightCard(this.sight, this.cardtype);
 
@@ -19,8 +26,11 @@ class SightCard extends StatelessWidget {
         width: double.infinity,
         height: 96,
         child: Image.network(sight.imgsource, fit: BoxFit.fitWidth,
-            loadingBuilder: (BuildContext context, Widget child,
-                ImageChunkEvent loadingProgress) {
+            loadingBuilder: (
+          BuildContext context,
+          Widget child,
+          ImageChunkEvent loadingProgress,
+        ) {
           if (loadingProgress == null) return child;
           return Center(
             child: CircularProgressIndicator(
@@ -119,14 +129,14 @@ class SightCard extends StatelessWidget {
   }
 
   Widget _buildIcons(BuildContext context) {
-    if (cardtype == 'basic') return _buildAddToFavIcon(context);
-    if (cardtype == 'fav') return _buildFavCardIcons(context);
-    if (cardtype == 'done') return _buildDoneCardIcons(context);
+    if (cardtype == Cardtype.basic) return _buildAddToFavIcon(context);
+    if (cardtype == Cardtype.fav) return _buildFavCardIcons(context);
+    if (cardtype == Cardtype.done) return _buildDoneCardIcons(context);
   }
 
   Widget _buildAttendInfo(BuildContext) {
-    if (cardtype == 'basic') return SizedBox.shrink();
-    if (cardtype == 'fav')
+    if (cardtype == Cardtype.basic) return SizedBox.shrink();
+    if (cardtype == Cardtype.fav)
       return Container(
           width: 296,
           height: 28,
@@ -138,7 +148,7 @@ class SightCard extends StatelessWidget {
             textAlign: TextAlign.left,
             style: stlNormalGreen,
           ));
-    if (cardtype == 'done')
+    if (cardtype == Cardtype.done)
       return Container(
           width: 296,
           height: 28,

@@ -7,15 +7,12 @@ import 'package:places/domain/sight.dart';
 import 'package:places/mocks.dart';
 import 'package:places/common/styles.dart';
 
-class NotColoredText extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return (Text(
-      txtFav,
-      style: stlNormal18AlmostBlack,
-      textAlign: TextAlign.center,
-    ));
-  }
+Widget _buildAppBarTitle(BuildContext context) {
+  return Text(
+    txtFav,
+    style: stlNormal18AlmostBlack,
+    textAlign: TextAlign.center,
+  );
 }
 
 class MyAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -33,7 +30,7 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
         title: Container(
           height: 80,
           alignment: Alignment.bottomCenter,
-          child: NotColoredText(),
+          child: _buildAppBarTitle(context),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -79,15 +76,15 @@ class _VisitingScreenState extends State<VisitingScreen> {
   List<Widget> _getFavList() {
     List temp = mocks
         .where((element) => element.planned != '')
-        .map((item) => SightCard(item, 'fav'))
+        .map((item) => SightCard(item, Cardtype.fav))
         .toList();
     return temp.isEmpty ? _buildEmptyFavList(context) : temp;
   }
 
   List<Widget> _getDoneList() {
     List temp = mocks
-        .where((element) => element.planned != '')
-        .map((item) => SightCard(item, 'done'))
+        .where((element) => element.visited != '')
+        .map((item) => SightCard(item, Cardtype.done))
         .toList();
     return temp.isEmpty ? _buildEmptyDoneList(context) : temp;
   }
