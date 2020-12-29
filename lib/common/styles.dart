@@ -9,6 +9,30 @@ const stlNormal32AlmostBlack = TextStyle(
   color: clrAlmostBlack,
 );
 
+const stlNormal18AlmostBlack = TextStyle(
+  fontFamily: "Roboto",
+  fontSize: 18,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.bold,
+  color: clrAlmostBlack,
+);
+
+const stlNormal18LightGrey = TextStyle(
+  fontFamily: "Roboto",
+  fontSize: 18,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.bold,
+  color: clrLightGrey,
+);
+
+const stlNormal14LightGrey = TextStyle(
+  fontFamily: "Roboto",
+  fontSize: 14,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.bold,
+  color: clrLightGrey,
+);
+
 const stlNormalWhite = TextStyle(
   color: Colors.white,
   fontWeight: FontWeight.bold,
@@ -25,6 +49,10 @@ const stlBold = TextStyle(
 
 const stlNormalGrey = TextStyle(
   color: clrGrey,
+);
+
+const stlNormalGreen = TextStyle(
+  color: clrGreen,
 );
 
 const stlNormalLightGrey = TextStyle(

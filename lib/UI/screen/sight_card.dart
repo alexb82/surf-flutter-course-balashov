@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:places/common/texts.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/common/colors.dart';
 import 'package:places/common/styles.dart';
 
+enum CardType {
+  basic,
+  fav,
+  done,
+}
+
 class SightCard extends StatelessWidget {
   final Sight sight;
 
-  SightCard(this.sight);
+  final cardType;
+
+  SightCard(this.sight, this.cardType);
 
   Widget _buildSightImg(BuildContext context) {
     return ClipRRect(
@@ -14,22 +23,26 @@ class SightCard extends StatelessWidget {
         top: Radius.circular(16),
       ),
       child: Container(
-      width: double.infinity,
-      height: 96,
-      child: Image.network(sight.imgsource, fit: BoxFit.fitWidth,
-          loadingBuilder: (BuildContext context, Widget child,
-              ImageChunkEvent loadingProgress) {
-        if (loadingProgress == null) return child;
-        return Center(
-          child: CircularProgressIndicator(
-            value: loadingProgress.expectedTotalBytes != null
-                ? loadingProgress.cumulativeBytesLoaded /
-                    loadingProgress.expectedTotalBytes
-                : null,
-          ),
-        );
-      }),
-    ),);
+        width: double.infinity,
+        height: 96,
+        child: Image.network(sight.imgsource, fit: BoxFit.fitWidth,
+            loadingBuilder: (
+          BuildContext context,
+          Widget child,
+          ImageChunkEvent loadingProgress,
+        ) {
+          if (loadingProgress == null) return child;
+          return Center(
+            child: CircularProgressIndicator(
+              value: loadingProgress.expectedTotalBytes != null
+                  ? loadingProgress.cumulativeBytesLoaded /
+                      loadingProgress.expectedTotalBytes
+                  : null,
+            ),
+          );
+        }),
+      ),
+    );
   }
 
   Widget _buildSightType(BuildContext context) {
@@ -61,6 +74,114 @@ class SightCard extends StatelessWidget {
     );
   }
 
+  Widget _buildFavCardIcons(BuildContext context) {
+    return Container(
+      alignment: Alignment.topLeft,
+      padding: EdgeInsets.only(
+        top: 18.5,
+        left: 249,
+      ),
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+        Container(
+          alignment: Alignment.centerLeft,
+          width: 22,
+          height: 19,
+          color: Colors.white,
+        ),
+        Container(
+          alignment: Alignment.centerLeft,
+          padding: EdgeInsets.only(
+            left: 28,
+          ),
+          width: 12,
+          height: 12,
+          color: Colors.white,
+        ),
+      ]),
+    );
+  }
+
+  Widget _buildDoneCardIcons(BuildContext context) {
+    return Container(
+      alignment: Alignment.topLeft,
+      padding: EdgeInsets.only(
+        top: 19,
+        left: 250,
+      ),
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+        Container(
+          alignment: Alignment.centerLeft,
+          width: 24,
+          height: 24,
+          color: Colors.white,
+        ),
+        Container(
+          alignment: Alignment.centerLeft,
+          padding: EdgeInsets.only(
+            left: 28,
+          ),
+          width: 12,
+          height: 12,
+          color: Colors.white,
+        ),
+      ]),
+    );
+  }
+
+  Widget _buildIcons(BuildContext context) {
+    switch (cardType) {
+      case CardType.basic:
+        return _buildAddToFavIcon(context);
+        break;
+      case CardType.fav:
+        return _buildFavCardIcons(context);
+        break;
+      case CardType.done:
+        return _buildDoneCardIcons(context);
+        break;
+      default:
+        return _buildAddToFavIcon(context);
+        break;
+    }
+  }
+
+  Widget _buildAttendInfo(BuildContext) {
+    switch (cardType) {
+      case CardType.basic:
+        return SizedBox.shrink();
+        break;
+      case CardType.fav:
+        return Container(
+            width: 296,
+            height: 28,
+            margin: EdgeInsets.only(
+              top: 2,
+            ),
+            child: Text(
+              txtPlannedAt + sight.planned,
+              textAlign: TextAlign.left,
+              style: stlNormalGreen,
+            ));
+        break;
+      case CardType.done:
+        return Container(
+            width: 296,
+            height: 28,
+            margin: EdgeInsets.only(
+              top: 2,
+            ),
+            child: Text(
+              txtVisitedAt + sight.visited,
+              textAlign: TextAlign.left,
+              style: stlNormalGrey,
+            ));
+        break;
+      default:
+        return SizedBox.shrink();
+        break;
+    }
+  }
+
   Widget _buildSightCardInfo(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
@@ -85,6 +206,9 @@ class SightCard extends StatelessWidget {
             ),
           ),
           Container(
+            child: _buildAttendInfo(BuildContext),
+          ),
+          Container(
               width: 296,
               margin: EdgeInsets.only(
                 top: 2,
@@ -101,35 +225,38 @@ class SightCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-      child: Column(children: [
-        Container(
-            child: Stack(
-          children: [
-            _buildSightImg(context),
-            _buildSightType(context),
-            _buildAddToFavIcon(context),
-          ],
-        )),
-        SizedBox(
-          height: 16,
-          child: Container(
-            color: clrDirtyWhite,
-          ),
-        ),
-        Container(
-          width: double.infinity,
-          height: 98,
-          decoration: BoxDecoration(
-            color: clrDirtyWhite,
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(12),
+    return AspectRatio(
+      aspectRatio: 3 / 2,
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+        child: Column(children: [
+          Container(
+              child: Stack(
+            children: [
+              _buildSightImg(context),
+              _buildSightType(context),
+              _buildIcons(context),
+            ],
+          )),
+          SizedBox(
+            height: 16,
+            child: Container(
+              color: clrDirtyWhite,
             ),
           ),
-          child: _buildSightCardInfo(context),
-        ),
-      ]),
+          Container(
+            width: double.infinity,
+            height: 98,
+            decoration: BoxDecoration(
+              color: clrDirtyWhite,
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(12),
+              ),
+            ),
+            child: _buildSightCardInfo(context),
+          ),
+        ]),
+      ),
     );
   }
 }

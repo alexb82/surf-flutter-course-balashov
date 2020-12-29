@@ -1,24 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:places/UI/screen/sight_card.dart';
+import 'package:places/common/bottomnavbar.dart';
+import 'package:places/common/bottomnavbaritems.dart';
 import 'package:places/common/colors.dart';
 import 'package:places/mocks.dart';
 import 'package:places/common/styles.dart';
 
-class NotColoredText extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return (Text(
-      "Список\nинтересных мест",
-      style: stlNormal32AlmostBlack,
-      textAlign: TextAlign.left,
-    ));
-  }
-}
-
-Widget Ratio3To2(Widget w) {
-  return AspectRatio(
-    aspectRatio: 3 / 2,
-    child: w,
+Widget _buildAppBarTitle(BuildContext context) {
+  return Text(
+    "Список\nинтересных мест",
+    style: stlNormal32AlmostBlack,
+    textAlign: TextAlign.left,
   );
 }
 
@@ -35,7 +27,7 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       title: Padding(
         padding: EdgeInsets.fromLTRB(16, 40, 16, 0),
-        child: NotColoredText(),
+        child: _buildAppBarTitle(context),
       ),
       backgroundColor: Colors.transparent,
       elevation: 0,
@@ -51,7 +43,7 @@ class SightListScreen extends StatefulWidget {
 
 class _SightListScreenState extends State<SightListScreen> {
   List<Widget> _getSightsList() {
-    return mocks.map((item) => Ratio3To2(SightCard(item))).toList();
+    return mocks.map((item) => SightCard(item, CardType.basic)).toList();
   }
 
   @override
@@ -67,6 +59,7 @@ class _SightListScreenState extends State<SightListScreen> {
           ),
         ),
       ),
+      bottomNavigationBar: MyBottomNavBar(BTNS),
     );
   }
 }
