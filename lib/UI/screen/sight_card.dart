@@ -4,7 +4,7 @@ import 'package:places/domain/sight.dart';
 import 'package:places/common/colors.dart';
 import 'package:places/common/styles.dart';
 
-enum Cardtype {
+enum CardType {
   basic,
   fav,
   done,
@@ -13,9 +13,9 @@ enum Cardtype {
 class SightCard extends StatelessWidget {
   final Sight sight;
 
-  final cardtype;
+  final cardType;
 
-  SightCard(this.sight, this.cardtype);
+  SightCard(this.sight, this.cardType);
 
   Widget _buildSightImg(BuildContext context) {
     return ClipRRect(
@@ -129,37 +129,57 @@ class SightCard extends StatelessWidget {
   }
 
   Widget _buildIcons(BuildContext context) {
-    if (cardtype == Cardtype.basic) return _buildAddToFavIcon(context);
-    if (cardtype == Cardtype.fav) return _buildFavCardIcons(context);
-    if (cardtype == Cardtype.done) return _buildDoneCardIcons(context);
+    switch (cardType) {
+      case CardType.basic:
+        return _buildAddToFavIcon(context);
+        break;
+      case CardType.fav:
+        return _buildFavCardIcons(context);
+        break;
+      case CardType.done:
+        return _buildDoneCardIcons(context);
+        break;
+      default:
+        return _buildAddToFavIcon(context);
+        break;
+    }
   }
 
   Widget _buildAttendInfo(BuildContext) {
-    if (cardtype == Cardtype.basic) return SizedBox.shrink();
-    if (cardtype == Cardtype.fav)
-      return Container(
-          width: 296,
-          height: 28,
-          margin: EdgeInsets.only(
-            top: 2,
-          ),
-          child: Text(
-            txtPlannedAt + sight.planned,
-            textAlign: TextAlign.left,
-            style: stlNormalGreen,
-          ));
-    if (cardtype == Cardtype.done)
-      return Container(
-          width: 296,
-          height: 28,
-          margin: EdgeInsets.only(
-            top: 2,
-          ),
-          child: Text(
-            txtVisitedAt + sight.visited,
-            textAlign: TextAlign.left,
-            style: stlNormalGrey,
-          ));
+    switch (cardType) {
+      case CardType.basic:
+        return SizedBox.shrink();
+        break;
+      case CardType.fav:
+        return Container(
+            width: 296,
+            height: 28,
+            margin: EdgeInsets.only(
+              top: 2,
+            ),
+            child: Text(
+              txtPlannedAt + sight.planned,
+              textAlign: TextAlign.left,
+              style: stlNormalGreen,
+            ));
+        break;
+      case CardType.done:
+        return Container(
+            width: 296,
+            height: 28,
+            margin: EdgeInsets.only(
+              top: 2,
+            ),
+            child: Text(
+              txtVisitedAt + sight.visited,
+              textAlign: TextAlign.left,
+              style: stlNormalGrey,
+            ));
+        break;
+      default:
+        return SizedBox.shrink();
+        break;
+    }
   }
 
   Widget _buildSightCardInfo(BuildContext context) {

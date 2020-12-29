@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places/UI/screen/sight_card.dart';
 import 'package:places/common/bottomnavbar.dart';
+import 'package:places/common/bottomnavbaritems.dart';
 import 'package:places/common/colors.dart';
 import 'package:places/common/texts.dart';
 import 'package:places/domain/sight.dart';
@@ -76,7 +77,7 @@ class _VisitingScreenState extends State<VisitingScreen> {
   List<Widget> _getFavList() {
     List temp = mocks
         .where((element) => element.planned != '')
-        .map((item) => SightCard(item, Cardtype.fav))
+        .map((item) => SightCard(item, CardType.fav))
         .toList();
     return temp.isEmpty ? _buildEmptyFavList(context) : temp;
   }
@@ -84,7 +85,7 @@ class _VisitingScreenState extends State<VisitingScreen> {
   List<Widget> _getDoneList() {
     List temp = mocks
         .where((element) => element.visited != '')
-        .map((item) => SightCard(item, Cardtype.done))
+        .map((item) => SightCard(item, CardType.done))
         .toList();
     return temp.isEmpty ? _buildEmptyDoneList(context) : temp;
   }
@@ -180,7 +181,7 @@ class _VisitingScreenState extends State<VisitingScreen> {
             ),
           ),
         ]),
-        bottomNavigationBar: MyBottomNavBar(),
+        bottomNavigationBar: MyBottomNavBar(BTNS),
       ),
     );
   }

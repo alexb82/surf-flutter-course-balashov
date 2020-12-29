@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places/UI/screen/sight_card.dart';
 import 'package:places/common/bottomnavbar.dart';
+import 'package:places/common/bottomnavbaritems.dart';
 import 'package:places/common/colors.dart';
 import 'package:places/mocks.dart';
 import 'package:places/common/styles.dart';
@@ -42,7 +43,7 @@ class SightListScreen extends StatefulWidget {
 
 class _SightListScreenState extends State<SightListScreen> {
   List<Widget> _getSightsList() {
-    return mocks.map((item) => SightCard(item, Cardtype.basic)).toList();
+    return mocks.map((item) => SightCard(item, CardType.basic)).toList();
   }
 
   @override
@@ -58,7 +59,7 @@ class _SightListScreenState extends State<SightListScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: MyBottomNavBar(),
+      bottomNavigationBar: MyBottomNavBar(BTNS),
     );
   }
 }

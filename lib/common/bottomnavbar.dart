@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:places/common/colors.dart';
 
+class MyBottomNavItem {
+  final double width;
+  final double height;
+  final int index;
+
+  MyBottomNavItem(this.index, this.width, this.height);
+}
+
+
 class MyBottomNavBar extends StatefulWidget {
   void onChange(int i) => print(i);
+  final List<MyBottomNavItem> children;
+
+  MyBottomNavBar(this.children);
 
   @override
   _MyBottomNavBarState createState() => _MyBottomNavBarState();
@@ -36,48 +48,18 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
           height: 56,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              InkWell(
+            children: widget.children.map((btn) {
+              return InkWell(
                 onTap: () {
-                  _changeIndex(0);
+                  _changeIndex(btn.index);
                 },
                 child: Container(
                   color: Colors.black,
-                  width: 20,
-                  height: 22,
+                  width: btn.width,
+                  height: btn.height,
                 ),
-              ),
-              InkWell(
-                onTap: () {
-                  _changeIndex(1);
-                },
-                child: Container(
-                  color: Colors.black,
-                  width: 20,
-                  height: 20,
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  _changeIndex(2);
-                },
-                child: Container(
-                  color: Colors.black,
-                  width: 22,
-                  height: 20,
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  _changeIndex(3);
-                },
-                child: Container(
-                  color: Colors.black,
-                  width: 20,
-                  height: 20,
-                ),
-              ),
-            ],
+              );
+            }).toList(),
           ),
         ),
       ]),
